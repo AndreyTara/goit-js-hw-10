@@ -5,19 +5,24 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
     />
-
+    
+  
     <title>TIMER</title>
-    <link rel="stylesheet" href="/goit-js-hw-10/assets/styles-5a0111c2.css">
+    <script type="module" crossorigin src="/goit-js-hw-10/commonHelpers.js"></script>
+    <link rel="modulepreload" crossorigin href="/goit-js-hw-10/assets/styles-41e93212.js">
+    <link rel="modulepreload" crossorigin href="/goit-js-hw-10/assets/vendor-ad859c2f.js">
+    <link rel="stylesheet" href="/goit-js-hw-10/assets/styles-77df6468.css">
+    <link rel="stylesheet" href="/goit-js-hw-10/assets/vendor-e5212ee8.css">
   </head>
   <body>
     <section class="section">
       <a class="section-link" href="./index.html">Go to home</a>
       <h1>Welcome to page TIMER</h1>
+      <p>Choise date click button start</p>
       <input type="text" id="datetime-picker" />
       <button type="button" data-start>Start</button>
 
@@ -40,10 +45,17 @@
         </div>
       </div>
     </section>
+    <!-- 
+    <div class="mod iziToast">
+      <button class="mod-btn">
+        <svg class="mod-icon" width="50" height="50">
+          <use href="./img/icon.svg#close-icon"></use>
+        </svg>
+      </button>
+      <p class="mod-decs">Please choose a date in the future</p>
+    </div> -->
 
-    <!-- <input type="text" id="text-box" size="20" value="Hello world!" />
-    <button onclick="selectText()">Select text</button> -->
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script src="./js/1-timer.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    
   </body>
 </html>
