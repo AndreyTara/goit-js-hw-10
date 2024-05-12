@@ -30,7 +30,7 @@ let outerItnervalId;
 let deltaDatePrev;
 let optionsIziToast = {
   theme: 'dark', // темна тема
-  timeout: 80000, // час прогресс бару
+  timeout: 3000, // час прогресс бару
   title: 'Please choose a date in the future', //фраза сповіщення
   titleSize: 18,
   position: 'topRight', // bottomRight, bottomLeft, topRight, topLeft, topCenter, bottomCenter
@@ -38,9 +38,9 @@ let optionsIziToast = {
   progressBar: false,
   closeOnClick: true, // можливість передчасного закривання вінка
   displayMode: 'once', // спрацювати 1 раз
-  iconUrl: './img/x-circle.svg',
+  iconUrl: './img/cross-x.svg',
   transitionIn: 'fadeInUp',
-  close: false, // закривання при наисканні на будь-який елемент сповіщення
+  close: false, // закривання при натисканні на будь-який елемент сповіщення
 };
 
 // опції для flatpickr
