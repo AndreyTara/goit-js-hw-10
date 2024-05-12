@@ -29,6 +29,7 @@ let outerItnervalId;
 //визначення змінної для прибрання навішування слухача при обранні тієїєж дати відліку
 let deltaDatePrev;
 let optionsIziToast = {
+  class: 'snackbar-box',
   theme: 'dark', // темна тема
   timeout: 3000, // час прогресс бару
   title: 'Please choose a date in the future', //фраза сповіщення
@@ -38,7 +39,7 @@ let optionsIziToast = {
   progressBar: false,
   closeOnClick: true, // можливість передчасного закривання вінка
   displayMode: 'once', // спрацювати 1 раз
-  iconUrl: './img/cross-x.svg',
+  iconUrl: '/img/cross-x.png',
   transitionIn: 'fadeInUp',
   close: false, // закривання при натисканні на будь-який елемент сповіщення
 };
