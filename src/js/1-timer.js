@@ -39,7 +39,8 @@ let optionsIziToast = {
   progressBar: false,
   closeOnClick: true, // можливість передчасного закривання вінка
   displayMode: 'once', // спрацювати 1 раз
-  iconUrl: './img/cross-x.png',
+  icon: 'fa fa-times-circle',
+  // iconUrl: './img/cross-x.png',
   transitionIn: 'fadeInUp',
   close: false, // закривання при натисканні на будь-який елемент сповіщення
 };

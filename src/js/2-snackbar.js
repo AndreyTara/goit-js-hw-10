@@ -84,7 +84,9 @@ function handleSubmit(event) {
         iziToastWrapper('success', {
           message,
           backgroundColor: '#33c660',
-          iconUrl: './img/check-ok.png',
+          icon: 'fa fa-check-square-o ',
+          iconColor: '#fff',
+          // iconUrl: './img/check-ok.png',
         });
       }, delay);
     } else {
@@ -94,7 +96,9 @@ function handleSubmit(event) {
         iziToastWrapper('error', {
           message,
           backgroundColor: '#fe554b',
-          iconUrl: './img/cross.png',
+          icon: 'fa fa-times',
+          iconColor: '#fff',
+          // iconUrl: './img/cross.png',
         });
       }, delay);
     }
