@@ -5,18 +5,19 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./css/styles.css" />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
     />
-
+    <link rel="stylesheet" href="./css/styles.css" />
+  
     <title>TIMER</title>
   </head>
   <body>
     <section class="section">
       <a class="section-link" href="./index.html">Go to home</a>
       <h1>Welcome to page TIMER</h1>
+      <p>Choise date click button start</p>
       <input type="text" id="datetime-picker" />
       <button type="button" data-start>Start</button>
 
@@ -39,10 +40,17 @@
         </div>
       </div>
     </section>
+    <!-- 
+    <div class="mod iziToast">
+      <button class="mod-btn">
+        <svg class="mod-icon" width="50" height="50">
+          <use href="./img/icon.svg#close-icon"></use>
+        </svg>
+      </button>
+      <p class="mod-decs">Please choose a date in the future</p>
+    </div> -->
 
-    <!-- <input type="text" id="text-box" size="20" value="Hello world!" />
-    <button onclick="selectText()">Select text</button> -->
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script src="./js/1-timer.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script type="module" src="./js/1-timer.js"></script>
   </body>
 </html>

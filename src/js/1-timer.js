@@ -1,3 +1,8 @@
+// Описаний у документації
+import iziToast from "izitoast";
+// Додатковий імпорт стилів
+import "izitoast/dist/css/iziToast.min.css";
+
 //додавання змінних для дом елемента кнопка запуску
 const buttonDom = document.querySelector('.section button[data-start]');
 
@@ -7,7 +12,7 @@ const timerDom = document.querySelectorAll('.timer .field span.value');
 // затемененя кнопки для розуміння неактивності кнопки
 buttonDom.classList.add('inactive');
 
-//визначення змінних !!!!!!!!!!!!!!!!!!!!
+// визначення змінних!!!!!!!!!!!
 let userSelectedDate;
 
 // визначення поточного дати та часу
@@ -18,9 +23,21 @@ let outerItnervalId;
 
 //визначення змінної для прибрання навішування слухача при обранні тієїєж дати відліку
 let deltaDatePrev;
+let optionsIziToast = {
+  theme: 'dark',
+  timeout: 5000,
+  message: 'Please choose a date in the future',
+  position: 'topRight', // bottomRight, bottomLeft, topRight, topLeft, topCenter, bottomCenter
+  progressBarColor: 'rgb(254, 80, 68)',
+  closeOnClick: true,
+  displayMode: 'once',
+  // messageSize: 22,
+  iconUrl: './img/x-circle.svg',
+  close: false,
+};
 
 // опції для flatpickr
-const options = {
+const optionsFlatpickr = {
   enableTime: true, //відображення дати
   time_24hr: true, // 24-часовий відображення
   defaultDate: new Date(), //потчні дата на приклад як -  placeholder
@@ -29,7 +46,7 @@ const options = {
 };
 
 // конфігурування flatpickr із підключенням опцій
-flatpickr('#datetime-picker', options);
+flatpickr('#datetime-picker', optionsFlatpickr);
 
 /**
  * функція запуску відліку до обраної дати
@@ -37,12 +54,15 @@ flatpickr('#datetime-picker', options);
  * @returns
  */
 function closeCalendar(selectedDates) {
+  //обраний час юзером
+  userSelectedDate = selectedDates[0];
   // дельта дат обраної та поточної
-  let deltaDateCur = selectedDates[0].getTime() - curDate.getTime();
+  let deltaDateCur = userSelectedDate.getTime() - curDate.getTime();
   // перевірку на дати в минулому
   if (deltaDateCur < 0) {
     // відображення попееджувальноого напису
-    window.alert('Please choose a date in the future');
+    // window.alert('Please choose a date in the future');
+    iziToast.error(optionsIziToast);
     // кнопка отримує стиль класу'.inactive'
     buttonDom.classList.add('inactive');
     return;
@@ -88,6 +108,8 @@ function iterate(deltaDate) {
       }, 1000);
       //зберегли значення сетІнтревалу() для його видалення після завдання нового сетІнтервалу()
       outerItnervalId = intervalId;
+      // кнопка отримує стиль класу'.inactive'
+      buttonDom.classList.add('inactive');
     },
     { once: true } // працює лише 1 раз потім слухач зникає
   );
@@ -106,9 +128,9 @@ function addsDataToDom({ objDateData, timerDom }) {
       //якщо i-тий елемент із датасет ==''
       if (timerDom[i].dataset[item] === '') {
         // якщо значення timerDom.textContent не змінилося у objDateData
-        if (timerDom[i].textContent !== addsZero(objDateData[item])) {
+        if (timerDom[i].textContent !== addLeadingZero(objDateData[item])) {
           // змінити значення timerDom якщо значення objDateData відповідне змінилося
-          timerDom[i].textContent = addsZero(objDateData[item]);
+          timerDom[i].textContent = addLeadingZero(objDateData[item]);
         }
       }
     }
@@ -116,13 +138,12 @@ function addsDataToDom({ objDateData, timerDom }) {
 }
 
 /**
- * функція додавання "0" до значень менших за 10
+ * функція додавання "0" до значень за 0...9
  * @param {Number} value - передане значення
  * @returns String
  */
-function addsZero(value) {
-  if (value < 10) return `0${value}`;
-  return `${value}`;
+function addLeadingZero(value) {
+  return `${value}`.padStart(2, '0');
 }
 
 /**

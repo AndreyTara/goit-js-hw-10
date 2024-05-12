@@ -3,6 +3,15 @@
 }
 .section h1 {
   margin: 20px 0;
+  transition: all 500ms ease;
+}
+.section > p {
+  opacity: 0;
+  transition: all 500ms ease;
+}
+
+.section > h1:hover + p {
+  opacity: 1;
 }
 .section input {
   margin: 10px 0;
@@ -19,9 +28,9 @@
   color: #000;
   border-color: #000;
 }
-.section button:hover {
+/* .section button:hover {
   background-color: #fff;
-}
+} */
 .section button.inactive {
   background-color: #e8e8e8;
   border-color: #9c9c9c;
@@ -48,4 +57,33 @@
   font-size: 16px;
   font-weight: 700;
   line-height: 1.5;
+}
+
+.mod {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 15px;
+  display: none;
+  align-items: center;
+  background-color: rgb(254, 80, 68);
+  border-radius: 10px;
+}
+.mod-btn {
+  background-color: transparent;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.mod-btn:hover .mod-icon > use {
+  stroke: #00000000;
+}
+.mod-icon > use {
+  /* fill: black; */
+  stroke: black;
+  /* color: blue; */
+}
+.mod-decs {
+  margin-left: 10px;
+  color: #fff;
 }
