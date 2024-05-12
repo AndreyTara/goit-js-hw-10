@@ -1,12 +1,12 @@
 // Описаний в документації для відображення часу
-import flatpickr from "flatpickr";
+import flatpickr from 'flatpickr';
 // Додатковий імпорт стилів
-import "flatpickr/dist/flatpickr.min.css";
+import 'flatpickr/dist/flatpickr.min.css';
 
-// Описаний у документації для відображення сповіщення про помилку  
-import iziToast from "izitoast";
+// Описаний у документації для відображення сповіщення про помилку
+import iziToast from 'izitoast';
 // Додатковий імпорт стилів
-import "izitoast/dist/css/iziToast.min.css";
+import 'izitoast/dist/css/iziToast.min.css';
 
 //додавання змінних для дом елемента кнопка запуску
 const buttonDom = document.querySelector('.section button[data-start]');
@@ -17,7 +17,7 @@ const timerDom = document.querySelectorAll('.timer .field span.value');
 // затемененя кнопки для розуміння неактивності кнопки
 buttonDom.classList.add('inactive');
 
-// визначення змінних!!!!!!!!!!!
+// визначення змінних
 let userSelectedDate;
 
 // визначення поточного дати та часу
@@ -30,8 +30,8 @@ let outerItnervalId;
 let deltaDatePrev;
 let optionsIziToast = {
   theme: 'dark', // темна тема
-  timeout: 80000,// час прогресс бару
-  title: 'Please choose a date in the future',//фраза сповіщення
+  timeout: 80000, // час прогресс бару
+  title: 'Please choose a date in the future', //фраза сповіщення
   titleSize: 18,
   position: 'topRight', // bottomRight, bottomLeft, topRight, topLeft, topCenter, bottomCenter
   backgroundColor: '#FD4B3F',
@@ -40,7 +40,7 @@ let optionsIziToast = {
   displayMode: 'once', // спрацювати 1 раз
   iconUrl: './img/x-circle.svg',
   transitionIn: 'fadeInUp',
-  close: false, // закривання при наисканні на будь-який елемент сповіщення 
+  close: false, // закривання при наисканні на будь-який елемент сповіщення
 };
 
 // опції для flatpickr
@@ -115,7 +115,7 @@ function iterate(deltaDate) {
       }, 1000);
       //зберегли значення сетІнтревалу() для його видалення після завдання нового сетІнтервалу()
       outerItnervalId = intervalId;
-      
+
       buttonDom.classList.add('inactive');
     },
     { once: true } // працює лише 1 раз потім слухач зникає
@@ -123,9 +123,9 @@ function iterate(deltaDate) {
 }
 
 /**
- * функція відображення у елементах timerDom значеннь змінних у objDateData
- * @param { Object} objDateData - формат дати у виглдяді об'єкту { days, hours, minutes, seconds }
- * @param { NodeList} timerDom - timerDom - посилання на дом елементи в HTML
+ * adds  numders objDateData in elements timerDom.
+ * @param { object} objDateData - date for { days, hours, minutes, seconds }
+ * @param { nodeList} timerDom - timerDom link for Dom element Form
  */
 function addsDataToDom({ objDateData, timerDom }) {
   // ітерація обєкту objDateData

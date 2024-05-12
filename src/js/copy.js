@@ -3,10 +3,37 @@ import iziToast from 'izitoast';
 // Додатковий імпорт стилів
 import 'izitoast/dist/css/iziToast.min.css';
 
+// const optionsIziToast = {
+//   class: 'snackbar-box',
+//   theme: 'dark', // темна тема
+//   timeout: 4000, // час прогресс бару
+//   message: 'Please choose a date in the future', //фраза сповіщення
+//   messageColor: '#fff',
+//   messageSize: 20,
+//   position: 'topRight', // bottomRight, bottomLeft, topRight, topLeft, topCenter, bottomCenter
+//   maxWidth: 500,
+//   progressBar: false,
+//   closeOnClick: true, // можливість передчасного закривання вінка
+//   displayMode: 'once', // спрацювати 1 раз
+//   transitionIn: 'fadeInUp',
+//   close: false, // закривання при наисканні на будь-який елемент сповіщення
+// };
+
 const form = document.querySelector('.form');
+/**
+ * Wrapper
+ * @param {"success"|"error"} method -"success"|"error"
+ * @param {object} customizedOptions - object contains options
+ * @param {string} customizedOptions.message - maessage
+ * @param {string} customizedOptions.backgroundColor - hex value
+ * @param {string} customizedOptions.iconUrl - url to closing item
+ */
 
+function iziToastWrapper(method, customizedOptions) {
+  const customIziToastOptions = getCustomIziToastOptions(customizedOptions);
+  iziToast[method](customIziToastOptions);
+}
 let { delay, state } = {};
-
 form.addEventListener('change', handleChange);
 form.addEventListener('submit', handleSubmit);
 
@@ -23,9 +50,6 @@ function handleChange(event) {
   // console.log({ delay, state });
 }
 
-/**
- * @returns {object} dafault parametrs of iziToast
- */
 function getIziToastDefaults() {
   return {
     class: 'snackbar-box',
@@ -43,12 +67,6 @@ function getIziToastDefaults() {
     close: false, // закривання при наисканні на будь-який елемент сповіщення
   };
 }
-
-/**
- *
- * @param {object} customizedOptions default concat to custom {message,backgroundColor,iconUrl}
- * @returns object
- */
 function getCustomIziToastOptions(customizedOptions) {
   return {
     ...getIziToastDefaults(),
@@ -57,22 +75,16 @@ function getCustomIziToastOptions(customizedOptions) {
 }
 
 /**
- * Wrapper adds cuctom options and method to iziToast
+ * Wrappwer
  * @param {"success"|"error"} method -"success"|"error"
- * @param {object} customizedOptions - object contains options
- * @param {string} customizedOptions.message - message
- * @param {string} customizedOptions.backgroundColor - hex value
- * @param {string} customizedOptions.iconUrl - url to closing item
+ * @param {object} customizedOptions - object
  */
+
 function iziToastWrapper(method, customizedOptions) {
   const customIziToastOptions = getCustomIziToastOptions(customizedOptions);
   iziToast[method](customIziToastOptions);
 }
 
-/**
- * Adds custom promise and adds custom iziToast(options and message)
- * @param {NodeListelement} event
- */
 function handleSubmit(event) {
   event.preventDefault();
   const myPromise = new Promise((resolve, reject) => {
@@ -100,9 +112,6 @@ function handleSubmit(event) {
     }
   });
 
-  /**
-   * check contains promise
-   */
   myPromise
     .then(result => {
       // Цей блок .then() не буде викликано,
