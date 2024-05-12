@@ -1,6 +1,6 @@
 ex-timer //npm install -g modernizr //https://flatpickr.js.org/examples/
-
 ex-timer //https://izitoast.marcelodolza.com/
+
 
 # Vanilla App Template
 

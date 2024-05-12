@@ -1,4 +1,9 @@
-// Описаний у документації
+// Описаний в документації для відображення часу
+import flatpickr from "flatpickr";
+// Додатковий імпорт стилів
+import "flatpickr/dist/flatpickr.min.css";
+
+// Описаний у документації для відображення сповіщення про помилку  
 import iziToast from "izitoast";
 // Додатковий імпорт стилів
 import "izitoast/dist/css/iziToast.min.css";
@@ -24,23 +29,25 @@ let outerItnervalId;
 //визначення змінної для прибрання навішування слухача при обранні тієїєж дати відліку
 let deltaDatePrev;
 let optionsIziToast = {
-  theme: 'dark',
-  timeout: 5000,
-  message: 'Please choose a date in the future',
+  theme: 'dark', // темна тема
+  timeout: 80000,// час прогресс бару
+  title: 'Please choose a date in the future',//фраза сповіщення
+  titleSize: 18,
   position: 'topRight', // bottomRight, bottomLeft, topRight, topLeft, topCenter, bottomCenter
-  progressBarColor: 'rgb(254, 80, 68)',
-  closeOnClick: true,
-  displayMode: 'once',
-  // messageSize: 22,
+  backgroundColor: '#FD4B3F',
+  progressBar: false,
+  closeOnClick: true, // можливість передчасного закривання вінка
+  displayMode: 'once', // спрацювати 1 раз
   iconUrl: './img/x-circle.svg',
-  close: false,
+  transitionIn: 'fadeInUp',
+  close: false, // закривання при наисканні на будь-який елемент сповіщення 
 };
 
 // опції для flatpickr
 const optionsFlatpickr = {
   enableTime: true, //відображення дати
   time_24hr: true, // 24-часовий відображення
-  defaultDate: new Date(), //потчні дата на приклад як -  placeholder
+  defaultDate: new Date(), //поточні дата на приклад як -  placeholder
   minuteIncrement: 1, // встановлення часу минімальні зміни на 1 хвилину
   onClose: closeCalendar, //визов функції після обрання дати та часу
 };
@@ -108,7 +115,7 @@ function iterate(deltaDate) {
       }, 1000);
       //зберегли значення сетІнтревалу() для його видалення після завдання нового сетІнтервалу()
       outerItnervalId = intervalId;
-      // кнопка отримує стиль класу'.inactive'
+      
       buttonDom.classList.add('inactive');
     },
     { once: true } // працює лише 1 раз потім слухач зникає
